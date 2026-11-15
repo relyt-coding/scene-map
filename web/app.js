@@ -93,15 +93,26 @@
   /* ---------------- map ---------------- */
   const emptyFC = () => ({ type: "FeatureCollection", features: [] });
 
+  const pendingSrc = {};
   function setSrc(id, data) {
+    pendingSrc[id] = data;
     const s = map && map.getSource(id);
     if (s && s.setData) s.setData(data);
+  }
+
+  function flushSrc() {
+    for (const id of Object.keys(pendingSrc)) {
+      const s = map.getSource(id);
+      if (s && s.setData) s.setData(pendingSrc[id]);
+    }
   }
 
   const panelW = () => (panel && !panel.hidden && window.innerWidth > 760 ? 400 : 0);
   const mapPad = (base = 80) => ({ top: base, bottom: base, left: base, right: base + panelW() });
 
+  let baseHidden = false;
   function setBaseVisible(on) {
+    baseHidden = !on;
     if (!map || !map.getLayer("points")) return;
     const v = on ? "visible" : "none";
     for (const id of ["points", "clusters", "cluster-count"]) map.setLayoutProperty(id, "visibility", v);
@@ -188,6 +199,8 @@
       });
 
       applyFilter();
+      flushSrc();
+      if (baseHidden) setBaseVisible(false);
 
       map.on("click", "points", (e) => openPlace(e.features[0].properties.slug));
       map.on("click", "tpts", (e) => openPlace(e.features[0].properties.slug));
