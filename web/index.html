@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scene Map — where films, shows, anime and games happen</title>
+<meta name="description" content="A clean world map of where films and shows were shot, and where anime, manga and games are set.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="preconnect" href="https://tiles.openfreemap.org">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="mark" href="./" aria-label="Scene Map home">
+    <span class="mark-dot"></span> Scene Map
+  </a>
+
+  <div class="searchwrap">
+    <svg class="searchicon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
+    <input id="search" type="search" placeholder="Film, show, anime, game or place" autocomplete="off" spellcheck="false" aria-label="Search">
+    <kbd class="kbd">/</kbd>
+    <div id="results" class="results" role="listbox" hidden></div>
+  </div>
+
+  <a class="about" href="credits.html">Data &amp; credits</a>
+</header>
+
+<div id="map" class="map"></div>
+
+<div class="hint" id="hint">
+  Try <button data-q="JoJo's Bizarre Adventure">JoJo's Bizarre Adventure</button>,
+  <button data-q="Breaking Bad">Breaking Bad</button> or
+  <button data-q="Paris">Paris</button>
+</div>
+
+<div class="chips" id="chips" aria-label="Filter">
+  <button data-kind="film" class="on">Films</button>
+  <button data-kind="tv" class="on">TV</button>
+  <button data-kind="anime" class="on">Anime</button>
+  <button data-kind="manga" class="on">Manga</button>
+  <button data-kind="game" class="on">Games</button>
+</div>
+
+<aside id="panel" class="panel" hidden>
+  <button id="close" class="close" aria-label="Close">&times;</button>
+  <div id="panelbody"></div>
+</aside>
+
+<div class="foot">
+  <span>&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &middot; <a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> &middot; Data: <a href="https://moviescenemap.com" target="_blank" rel="noopener">Movie Scene Map</a> (CC0)</span>
+</div>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
