@@ -47,8 +47,20 @@ npx serve web
 
 ## Deploy
 
-Static site, no build step at deploy time.
+Live at **https://relyt-coding.github.io/scene-map/** (GitHub Pages).
+
+Push to `main` and `.github/workflows/pages.yml` deploys the `web` folder automatically.
+There is no build step at deploy time — `web/data` is committed.
+
+```powershell
+git add -A
+git commit -m "Update data"
+git push
+```
+
+Netlify is also wired up (`netlify.toml`, publish `web`) if you ever prefer that host:
 
 ```powershell
 npx netlify deploy --prod --dir web
 ```
+
