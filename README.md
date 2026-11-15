@@ -39,6 +39,26 @@ title whose name matches `title` or an alias.
 
 `place` must be a slug from the dataset — the build prints any that don't exist.
 
+## Private screenshots (local only)
+
+Anime and game frames are copyrighted, so they are not on the public site. For your
+own machine you can drop stills into `private/<route-id>/`, numbered by stop:
+
+```
+private/jojo/01.jpg
+private/jojo/04.jpg
+```
+
+Then rebuild with the private flag:
+
+```powershell
+node build/build-data.js --local
+```
+
+`private/` and `web/data/private/` are gitignored, so a normal build and push never
+ships them. The card shows "Your own copy" instead of a photo credit, and falls back
+to the real-place photo for any stop without a still.
+
 ## Run locally
 
 ```powershell

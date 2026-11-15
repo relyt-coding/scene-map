@@ -175,6 +175,7 @@ fs.mkdirSync(path.join(OUT, "details"), { recursive: true });
 fs.mkdirSync(path.join(OUT, "links"), { recursive: true });
 
 function writeJson(file, obj, pretty = false) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
   const text = pretty ? JSON.stringify(obj, null, 1) : JSON.stringify(obj);
   fs.writeFileSync(file, text);
   const gz = zlib.gzipSync(Buffer.from(text), { level: 9 });
@@ -256,3 +257,39 @@ if (fs.existsSync(routesDir)) {
   }
 }
 writeJson(path.join(OUT, "routes.json"), allRoutes);
+
+// ---- private, local-only photos (web/data/private is gitignored, never published) ----
+const LOCAL = process.argv.includes("--local");
+const PRIVATE_SRC = path.join(__dirname, "..", "private");
+const PRIVATE_OUT = path.join(OUT, "private");
+const manifest = {};
+
+if (LOCAL && fs.existsSync(PRIVATE_SRC)) {
+  fs.mkdirSync(PRIVATE_OUT, { recursive: true });
+  for (const dir of fs.readdirSync(PRIVATE_SRC, { withFileTypes: true })) {
+    if (!dir.isDirectory()) continue;
+    const routeId = dir.name;
+    const route = allRoutes.find((r) => r.id === routeId);
+    if (!route) {
+      console.log("PRIVATE " + routeId + ": no such route");
+      continue;
+    }
+    const files = fs.readdirSync(path.join(PRIVATE_SRC, routeId));
+    const map = {};
+    fs.mkdirSync(path.join(PRIVATE_OUT, routeId), { recursive: true });
+    for (const f of files) {
+      const m = /^(\d{1,2})\.(jpg|jpeg|png|webp|avif)$/i.exec(f);
+      if (!m) continue;
+      const n = parseInt(m[1], 10);
+      if (n < 1 || n > route.stops.length) {
+        console.log("PRIVATE " + routeId + "/" + f + ": stop out of range");
+        continue;
+      }
+      fs.copyFileSync(path.join(PRIVATE_SRC, routeId, f), path.join(PRIVATE_OUT, routeId, f));
+      map[String(n)] = "private/" + routeId + "/" + f;
+    }
+    manifest[routeId] = map;
+    console.log("PRIVATE " + routeId + ": " + Object.keys(map).length + "/" + route.stops.length + " photos");
+  }
+}
+writeJson(path.join(OUT, "private", "manifest.json"), manifest);

@@ -25,6 +25,7 @@
   let activeResult = -1;
   let searchResults = [];
   let pendingHash = null;
+  let privateManifest = {};
 
   const norm = (s) => (s || "")
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -54,16 +55,19 @@
 
   /* ---------------- data ---------------- */
   async function load() {
-    const [pl, rt] = await Promise.all([
+    const [pl, rt, pm] = await Promise.all([
       fetch("data/places.json").then((r) => r.json()),
       fetch("data/routes.json").then((r) => r.json()).catch(() => []),
+      fetch("data/private/manifest.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
     ]);
     places = pl;
     routes = rt;
+    privateManifest = pm || {};
     for (const p of places) placeBySlug.set(p[0], p);
     initMap();
 
     placeIndex = places.map((p) => ({ kind: "place", id: p[0], name: p[1], n: norm(p[1]), sub: placeSub(p), score: p[7] }));
+
 
     $("#search").placeholder = "Loading titles" + ELLIPSIS;
 
@@ -530,13 +534,13 @@
   }
 
   function computeSteps(route, mode) {
-    if (mode === "scene") return route.stops.map((s) => ({ part: s.part, episode: s.episode, parts: [s], scene: s.scene }));
+    if (mode === "scene") return route.stops.map((s, i) => ({ part: s.part, episode: s.episode, parts: [s], scene: s.scene, idx: i }));
     const steps = [];
     let cur = null;
-    for (const s of route.stops) {
+    route.stops.forEach((s, i) => {
       if (cur && cur.part === s.part && cur.episode === s.episode) cur.parts.push(s);
-      else { cur = { part: s.part, episode: s.episode, parts: [s], scene: s.scene }; steps.push(cur); }
-    }
+      else { cur = { part: s.part, episode: s.episode, parts: [s], scene: s.scene, idx: i }; steps.push(cur); }
+    });
     return steps;
   }
 
@@ -595,10 +599,14 @@
 
     const also = s.parts.length > 1 ? s.parts.slice(1).map((x) => x.name) : [];
     const pad = (n) => String(n).padStart(2, "0");
-    const credit = [p.photoName ? p.photoName : "", p.photoBy ? "photo " + p.photoBy : "", p.photoLicence || ""].filter(Boolean).join(" " + MIDDOT + " ");
+    const localFile = (privateManifest[route.id] || {})[String((s.idx || 0) + 1)];
+    const heroSrc = localFile ? "data/" + localFile : p.image;
+    const credit = localFile
+      ? "Your own copy"
+      : [p.photoName ? p.photoName : "", p.photoBy ? "photo " + p.photoBy : "", p.photoLicence || ""].filter(Boolean).join(" " + MIDDOT + " ");
 
     body.innerHTML = `
-      ${p.image ? `<button class="route-hero" data-place="${esc(p.photoPlace || p.place)}" style="background-image:url('${esc(p.image)}')" aria-label="Open ${esc(p.photoName || p.name)}"><span class="route-credit">${esc(credit)}</span></button>` : ""}
+      ${heroSrc ? `<button class="route-hero" data-place="${esc(p.photoPlace || p.place)}" style="background-image:url('${esc(heroSrc)}')" aria-label="Open ${esc(p.photoName || p.name)}">${credit ? `<span class="route-credit">${esc(credit)}</span>` : ""}</button>` : ""}
       <div class="pad">
       <p class="eyebrow">${route.curated ? "Hand-built route" : "Route"}</p>
       <h1 style="font-size:20px">${esc(route.title)}</h1>

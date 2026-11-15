@@ -1,3 +1,7 @@
 raw/
 node_modules/
 .netlify/
+
+# private, never published: personal screenshots for routes
+private/
+web/data/private/
