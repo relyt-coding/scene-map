@@ -568,6 +568,11 @@
     if (!routeState) return;
     i = Math.max(0, Math.min(routeState.steps.length - 1, i));
     routeState.step = i;
+    const preload = (j) => {
+      const st = routeState.steps[j];
+      if (st && st.parts[0] && st.parts[0].image) { const im = new Image(); im.src = st.parts[0].image; }
+    };
+    preload(i + 1); preload(i - 1);
     const p = routeState.steps[i].parts[0];
     map.flyTo({ center: [p.lng, p.lat], zoom: Math.max(map.getZoom(), 6), duration: 800, offset: [-panelW() / 2, 0] });
     history.replaceState(null, "", `#r=${routeState.route.id}&s=${i + 1}&m=${routeState.mode}`);
@@ -590,8 +595,11 @@
 
     const also = s.parts.length > 1 ? s.parts.slice(1).map((x) => x.name) : [];
     const pad = (n) => String(n).padStart(2, "0");
+    const credit = [p.photoName ? p.photoName : "", p.photoBy ? "photo " + p.photoBy : "", p.photoLicence || ""].filter(Boolean).join(" " + MIDDOT + " ");
 
-    body.innerHTML = `<div class="pad">
+    body.innerHTML = `
+      ${p.image ? `<button class="route-hero" data-place="${esc(p.photoPlace || p.place)}" style="background-image:url('${esc(p.image)}')" aria-label="Open ${esc(p.photoName || p.name)}"><span class="route-credit">${esc(credit)}</span></button>` : ""}
+      <div class="pad">
       <p class="eyebrow">${route.curated ? "Hand-built route" : "Route"}</p>
       <h1 style="font-size:20px">${esc(route.title)}</h1>
       ${route.subtitle ? `<div class="meta" style="font-size:12.5px">${esc(route.subtitle)}</div>` : ""}
@@ -607,7 +615,6 @@
       <span class="stop-scene">${esc(s.scene || "")}</span>
 
       <div class="stop-place">
-        ${p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy">` : ""}
         <div>
           <div class="nm">${esc(p.name)}</div>
           <div class="ct">${esc(p.country || "")}${also.length ? " " + MIDDOT + " also " + esc(also.join(", ")) : ""}</div>
@@ -677,6 +684,8 @@
       if (s > 1) goStep(s - 1);
     }
   }
+
+  window.addEventListener("hashchange", () => parseHash());
 
   /* ---------------- misc UI ---------------- */
   document.querySelectorAll(".hint button").forEach((b) => b.addEventListener("click", () => {

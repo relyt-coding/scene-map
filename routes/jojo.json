@@ -4,7 +4,7 @@
   "subtitle": "Hirohiko Araki · manga 1987–, anime 2012–",
   "aliases": ["jojolion", "jojo's bizarre adventure: diamond is unbreakable chapter i"],
   "curated": true,
-  "note": "Hand-built from the manga and anime. The location dataset has no episode or scene order, so this route is editorial: places are real, the scene labels are ours.",
+  "note": "Hand-built from the manga and anime. The location dataset has no episode or scene order, so this route is editorial: places are real, the scene labels are ours. Photos are the real places, from Wikimedia Commons.",
   "sources": [
     "https://jojowiki.com/Location_Reference_Gallery",
     "https://theanimetrip.com/en/opere/jojo-s-bizarre-adventure"
@@ -14,150 +14,175 @@
       "part": "Part 1 · Phantom Blood",
       "episode": "Ep. 1–9 · 1880s England",
       "place": "london",
+      "photo": "tower-bridge",
       "scene": "Jonathan Joestar, Dio Brando and the stone mask at the Joestar estate"
     },
     {
       "part": "Part 2 · Battle Tendency",
       "episode": "Ep. 10–26 · 1938–39",
       "place": "new-york-city",
+      "photo": "statue-of-liberty",
       "scene": "Joseph Joestar in New York, and Straizo's betrayal"
     },
     {
       "part": "Part 2 · Battle Tendency",
       "episode": "Ep. 10–26 · 1938–39",
       "place": "venice",
+      "photo": "rialto-bridge",
       "scene": "Joseph and Caesar train under Lisa Lisa; the Rialto Bridge chase"
     },
     {
       "part": "Part 2 · Battle Tendency",
       "episode": "Ep. 10–26 · 1938–39",
       "place": "rome",
+      "photo": "colosseum",
       "scene": "The Pillar Men wake beneath the Colosseum"
     },
     {
       "part": "Part 2 · Battle Tendency",
       "episode": "Ep. 10–26 · 1938–39",
       "place": "st-moritz",
+      "photo": "st-moritz",
       "scene": "The hunt for the Red Stone of Aja ends in the Swiss mountains"
     },
     {
       "part": "Part 3 · Stardust Crusaders",
       "episode": "Ep. 27–74 · 1988–89",
       "place": "tokyo",
+      "photo": "tokyo",
       "scene": "Jotaro's cell, and the start of the fifty-day journey"
     },
     {
       "part": "Part 3 · Stardust Crusaders",
       "episode": "Ep. 27–74 · 1988–89",
       "place": "hong-kong",
+      "photo": "victoria-harbour",
       "scene": "The first Stand battles outside Japan"
     },
     {
       "part": "Part 3 · Stardust Crusaders",
       "episode": "Ep. 27–74 · 1988–89",
       "place": "singapore",
+      "photo": "singapore",
       "scene": "The hotel, the fog, and Rubber Soul"
     },
     {
       "part": "Part 3 · Stardust Crusaders",
       "episode": "Ep. 27–74 · 1988–89",
       "place": "kolkata",
+      "photo": "howrah-bridge",
       "scene": "Calcutta, and the ship that was never a ship"
     },
     {
       "part": "Part 3 · Stardust Crusaders",
       "episode": "Ep. 27–74 · 1988–89",
       "place": "varanasi",
+      "photo": "varanasi",
       "scene": "Benares, and the two youngest Stand users"
     },
     {
       "part": "Part 3 · Stardust Crusaders",
       "episode": "Ep. 27–74 · 1988–89",
       "place": "karachi",
+      "photo": "karachi",
       "scene": "The beggar, the desert road, and the last stop before Egypt"
     },
     {
       "part": "Part 3 · Stardust Crusaders",
       "episode": "Ep. 27–74 · 1988–89",
       "place": "luxor",
+      "photo": "karnak",
       "scene": "The Egyptian desert, and the fights on the road to Cairo"
     },
     {
       "part": "Part 3 · Stardust Crusaders",
       "episode": "Ep. 27–74 · 1988–89",
       "place": "cairo",
+      "photo": "giza",
       "scene": "Dio's mansion, and the fight that ends the journey"
     },
     {
       "part": "Part 4 · Diamond is Unbreakable",
       "episode": "Ep. 75–113 · 1999",
       "place": "sendai",
+      "photo": "sendai",
       "scene": "Morioh, the fictional town drawn on Sendai"
     },
     {
       "part": "Part 5 · Golden Wind",
       "episode": "Ep. 114–152 · 2001",
       "place": "naples",
+      "photo": "naples",
       "scene": "Giorno Giovanna meets Bruno Bucciarati"
     },
     {
       "part": "Part 5 · Golden Wind",
       "episode": "Ep. 114–152 · 2001",
       "place": "pompeii",
+      "photo": "pompeii",
       "scene": "The mirror fight in the ruins"
     },
     {
       "part": "Part 5 · Golden Wind",
       "episode": "Ep. 114–152 · 2001",
       "place": "florence",
+      "photo": "florence",
       "scene": "The train north, and the fight on the highway"
     },
     {
       "part": "Part 5 · Golden Wind",
       "episode": "Ep. 114–152 · 2001",
       "place": "san-giorgio-maggiore",
+      "photo": "san-giorgio-maggiore",
       "scene": "The Venice church where the boss's identity is nearly revealed"
     },
     {
       "part": "Part 5 · Golden Wind",
       "episode": "Ep. 114–152 · 2001",
       "place": "sardinia",
+      "photo": "sardinia",
       "scene": "The island, the plane, and the boss's past"
     },
     {
       "part": "Part 5 · Golden Wind",
       "episode": "Ep. 114–152 · 2001",
       "place": "rome",
+      "photo": "rome",
       "scene": "The final fight in the capital"
     },
     {
       "part": "Part 6 · Stone Ocean",
       "episode": "Ep. 153–190 · 2011",
       "place": "orlando",
+      "photo": "orlando",
       "scene": "Green Dolphin Street Prison, in Florida"
     },
     {
       "part": "Part 6 · Stone Ocean",
       "episode": "Ep. 153–190 · 2011",
       "place": "cape-canaveral",
+      "photo": "cape-canaveral",
       "scene": "The launch pad, and the end of the world"
     },
     {
       "part": "Part 7 · Steel Ball Run",
       "episode": "Manga · 1890",
       "place": "san-diego",
+      "photo": "san-diego",
       "scene": "The race across America begins"
     },
     {
       "part": "Part 7 · Steel Ball Run",
       "episode": "Manga · 1890",
       "place": "new-york-city",
+      "photo": "new-york-city",
       "scene": "The race ends in New York"
     },
     {
       "part": "Part 8 · JoJolion",
       "episode": "Manga · 2011",
       "place": "sendai",
+      "photo": "sendai",
       "scene": "Morioh again, after the earthquake"
     }
   ]

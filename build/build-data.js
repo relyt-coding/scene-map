@@ -214,11 +214,34 @@ if (fs.existsSync(routesDir)) {
     const missing = route.stops.filter((s) => !places.has(s.place)).map((s) => s.place);
     if (missing.length) console.log(`ROUTE ${f}: MISSING ${missing.join(", ")}`);
     else console.log(`ROUTE ${f}: ok (${route.stops.length} stops)`);
+
+    const missingPhotos = route.stops
+      .filter((s) => s.photo && !places.has(s.photo))
+      .map((s) => s.photo);
+    if (missingPhotos.length) console.log(`ROUTE ${f}: MISSING PHOTO ${missingPhotos.join(", ")}`);
+
     const resolved = route.stops
       .filter((s) => places.has(s.place))
       .map((s) => {
         const p = places.get(s.place);
-        return { part: s.part, episode: s.episode, scene: s.scene, place: s.place, name: p.name, country: p.country, lat: +p.lat.toFixed(4), lng: +p.lng.toFixed(4), image: p.image };
+        const ph = places.get(s.photo) || p;
+        const big = (ph.image || "").replace("width=500", "width=1200");
+        return {
+          part: s.part,
+          episode: s.episode,
+          scene: s.scene,
+          place: s.place,
+          name: p.name,
+          country: p.country,
+          lat: +p.lat.toFixed(4),
+          lng: +p.lng.toFixed(4),
+          image: big,
+          photoPlace: ph.slug,
+          photoName: ph.name,
+          photoBy: ph.imageBy || "",
+          photoLicence: ph.imageLicence || "",
+          photoLicenceUrl: ph.imageLicenceUrl || "",
+        };
       });
     allRoutes.push({
       id: route.id,
