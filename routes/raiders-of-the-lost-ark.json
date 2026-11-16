@@ -1,0 +1,33 @@
+{
+  "id": "raiders-of-the-lost-ark",
+  "title": "Raiders of the Lost Ark",
+  "subtitle": "Steven Spielberg · 1981",
+  "kind": "film",
+  "curated": true,
+  "aliases": ["indiana jones and the raiders of the lost ark"],
+  "note": "Filmed in Hawaii, Tunisia, California and at Elstree. The story track follows Indy from Peru to the Aegean.",
+  "sources": ["https://en.wikipedia.org/wiki/Raiders_of_the_Lost_Ark"],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Hawaii", "episode": "Act 1", "place": "kaua-i", "scene": "Kauai — the South American jungle and temple" },
+        { "part": "California", "episode": "Act 1", "place": "san-francisco", "scene": "San Francisco — Marshall College" },
+        { "part": "Tunisia", "episode": "Act 2", "place": "tozeur", "scene": "Tozeur — Cairo and the dig at Tanis" },
+        { "part": "Tunisia", "episode": "Act 2", "place": "kairouan", "scene": "Kairouan — the Cairo street chase" },
+        { "part": "France", "episode": "Act 3", "place": "la-rochelle", "scene": "La Rochelle — the submarine base" },
+        { "part": "England", "episode": "Interiors", "place": "elstree-studios", "scene": "Elstree — the soundstages" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "1936 · Peru", "episode": "Act 1", "place": "peru", "scene": "A temple in the Peruvian jungle" },
+        { "part": "1936 · Nepal", "episode": "Act 1", "place": "kathmandu", "scene": "Kathmandu — Marion's bar" },
+        { "part": "1936 · Egypt", "episode": "Act 2", "place": "cairo", "scene": "Cairo — the market and the dig" },
+        { "part": "1936 · Egypt", "episode": "Act 2", "place": "egypt", "label": "Tanis", "scene": "Tanis — the Well of Souls" },
+        { "part": "1936 · Aegean", "episode": "Act 3", "place": "greece", "scene": "An island in the Aegean — opening the Ark" }
+      ]
+    }
+  }
+}

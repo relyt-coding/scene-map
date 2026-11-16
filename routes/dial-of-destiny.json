@@ -1,0 +1,33 @@
+{
+  "id": "dial-of-destiny",
+  "title": "Indiana Jones and the Dial of Destiny",
+  "subtitle": "James Mangold · 2023",
+  "kind": "film",
+  "curated": true,
+  "aliases": ["indiana jones and the dial of destiny"],
+  "note": "Shot in Scotland, England, Morocco and Sicily. Glasgow doubles for New York, and Fez for Tangier.",
+  "sources": ["https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Scotland", "episode": "Act 1", "place": "glasgow", "scene": "Glasgow — New York, 1969" },
+        { "part": "Scotland", "episode": "Prologue", "place": "glencoe", "scene": "Glencoe — the wartime European countryside" },
+        { "part": "England", "episode": "Interiors", "place": "pinewood-studios", "scene": "Pinewood — the soundstages" },
+        { "part": "Morocco", "episode": "Act 2", "place": "oujda", "scene": "Oujda — the Tangier rooftops" },
+        { "part": "Morocco", "episode": "Act 2", "place": "fez", "scene": "Fez — the medina" },
+        { "part": "Sicily", "episode": "Act 3", "place": "syracuse", "scene": "Syracuse — the Sicilian chase" },
+        { "part": "Sicily", "episode": "Act 3", "place": "segesta", "scene": "Segesta — the Greek temple" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "1969 · New York", "episode": "Act 1", "place": "new-york-city", "scene": "New York — the parade and the moon-day party" },
+        { "part": "1969 · Morocco", "episode": "Act 2", "place": "tangier", "scene": "Tangier — the auction and the chase" },
+        { "part": "1969 · Sicily", "episode": "Act 3", "place": "sicily", "label": "Syracuse", "scene": "Sicily — the cave and the dial" },
+        { "part": "1969 · Aegean", "episode": "Act 3", "place": "greece", "scene": "The Aegean — the final crossing" }
+      ]
+    }
+  }
+}

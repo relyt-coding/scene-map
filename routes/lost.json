@@ -1,0 +1,31 @@
+{
+  "id": "lost",
+  "title": "Lost",
+  "subtitle": "ABC · 2004–2010",
+  "kind": "tv",
+  "curated": true,
+  "note": "Filmed entirely on Oahu. The island in the story is fictional, so the story track pins it to Fiji in the South Pacific.",
+  "sources": ["https://en.wikipedia.org/wiki/Lost_(TV_series)"],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Oahu", "episode": "Seasons 1–6", "place": "mokuleia", "scene": "Mokulēia — the beach camp" },
+        { "part": "Oahu", "episode": "Seasons 1–6", "place": "oahu", "scene": "Oahu — the jungle and the valleys" },
+        { "part": "Oahu", "episode": "Seasons 1–6", "place": "hawaiian-islands", "scene": "The islands standing in for the South Pacific" },
+        { "part": "Honolulu", "episode": "Seasons 1–6", "place": "honolulu", "scene": "Honolulu — the airport and the city" },
+        { "part": "Honolulu", "episode": "Seasons 1–6", "place": "hawaii-convention-center", "scene": "The convention centre — the Sydney airport interiors" },
+        { "part": "California", "episode": "Seasons 1–6", "place": "los-angeles", "scene": "Los Angeles — the mainland flashbacks" },
+        { "part": "England", "episode": "Seasons 1–6", "place": "london", "scene": "London — additional flashbacks" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "2004 · Sydney", "episode": "Ep. 1", "place": "sydney", "scene": "Sydney — Oceanic Flight 815 departs" },
+        { "part": "2004 · The Island", "episode": "Ep. 1–121", "place": "fiji", "label": "The Island", "scene": "A hidden island in the South Pacific" },
+        { "part": "2004 · Los Angeles", "episode": "Flashbacks", "place": "los-angeles", "scene": "Los Angeles — the lives they left behind" }
+      ]
+    }
+  }
+}

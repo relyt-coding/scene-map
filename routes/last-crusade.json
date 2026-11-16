@@ -1,0 +1,33 @@
+{
+  "id": "last-crusade",
+  "title": "Indiana Jones and the Last Crusade",
+  "subtitle": "Steven Spielberg · 1989",
+  "kind": "film",
+  "curated": true,
+  "aliases": ["indiana jones and the last crusade"],
+  "note": "Shot in Spain, Venice, Jordan, Utah and England. The story crosses from the American Southwest to the Holy Land.",
+  "sources": ["https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Last_Crusade"],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Utah", "episode": "Prologue", "place": "arches-national-park", "scene": "Arches — the Young Indy prologue" },
+        { "part": "Venice", "episode": "Act 2", "place": "venice", "scene": "Venice — the library and the canals" },
+        { "part": "Spain", "episode": "Act 2", "place": "tabernas-desert", "scene": "Tabernas — the desert of Hatay" },
+        { "part": "Jordan", "episode": "Act 3", "place": "petra", "scene": "Petra — the Canyon of the Crescent Moon" },
+        { "part": "England", "episode": "Interiors", "place": "elstree-studios", "scene": "Elstree — the castle and temple sets" },
+        { "part": "California", "episode": "Interiors", "place": "san-francisco", "scene": "San Francisco — the university" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "1912 · Utah", "episode": "Prologue", "place": "utah", "scene": "Utah — the boy and the cross" },
+        { "part": "1938 · Venice", "episode": "Act 2", "place": "venice", "scene": "Venice — the catacombs and the canal chase" },
+        { "part": "1938 · Austria", "episode": "Act 2", "place": "austria", "label": "Brunwald Castle", "scene": "Austria — the castle where his father is held" },
+        { "part": "1938 · Berlin", "episode": "Act 2", "place": "berlin", "scene": "Berlin — the book burning and the Zeppelin" },
+        { "part": "1938 · Holy Land", "episode": "Act 3", "place": "petra", "label": "The Canyon", "scene": "The Canyon of the Crescent Moon — the Grail temple" }
+      ]
+    }
+  }
+}

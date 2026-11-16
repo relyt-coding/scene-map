@@ -1,0 +1,32 @@
+{
+  "id": "kingdom-of-the-crystal-skull",
+  "title": "Indiana Jones and the Kingdom of the Crystal Skull",
+  "subtitle": "Steven Spielberg · 2008",
+  "kind": "film",
+  "curated": true,
+  "aliases": ["indiana jones and the kingdom of the crystal skull"],
+  "note": "Shot in New Mexico, Connecticut, Hawaii, Brazil and California. The story runs from Nevada to the Amazon.",
+  "sources": ["https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Kingdom_of_the_Crystal_Skull"],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "New Mexico", "episode": "Act 1", "place": "deming", "scene": "Deming — the Nevada desert and the warehouse" },
+        { "part": "Connecticut", "episode": "Act 1", "place": "new-haven", "scene": "New Haven — Yale" },
+        { "part": "Hawaii", "episode": "Act 2", "place": "hilo", "scene": "Hilo — the Peruvian jungle" },
+        { "part": "Brazil", "episode": "Act 3", "place": "iguacu-falls", "scene": "Iguaçu Falls — the river chase" },
+        { "part": "Brazil", "episode": "Act 3", "place": "amazon-rainforest", "scene": "Amazon rainforest — the road to Akator" },
+        { "part": "California", "episode": "Interiors", "place": "los-angeles", "scene": "Los Angeles — studio work" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "1957 · Nevada", "episode": "Act 1", "place": "area-51", "scene": "Nevada — the warehouse and the escape" },
+        { "part": "1957 · Connecticut", "episode": "Act 1", "place": "new-haven", "scene": "New Haven — Marshall College" },
+        { "part": "1957 · Peru", "episode": "Act 2", "place": "nazca", "scene": "Nazca — the lines in the desert" },
+        { "part": "1957 · Amazon", "episode": "Act 3", "place": "brazil", "label": "Akator", "scene": "The lost city of Akator" }
+      ]
+    }
+  }
+}

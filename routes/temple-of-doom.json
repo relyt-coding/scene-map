@@ -1,0 +1,30 @@
+{
+  "id": "temple-of-doom",
+  "title": "Indiana Jones and the Temple of Doom",
+  "subtitle": "Steven Spielberg · 1984",
+  "kind": "film",
+  "curated": true,
+  "aliases": ["indiana jones and the temple of doom"],
+  "note": "Shot in Macau, Sri Lanka, California and at Elstree. The story runs from Shanghai to a fictional palace in India.",
+  "sources": ["https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Temple_of_Doom"],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Macau", "episode": "Act 1", "place": "macau", "scene": "Macau — the Shanghai nightclub streets" },
+        { "part": "Sri Lanka", "episode": "Act 2", "place": "kandy", "scene": "Kandy — the Indian village and the jungle" },
+        { "part": "California", "episode": "Act 1", "place": "hamilton-air-force-base", "scene": "Hamilton Air Force Base — the airfield" },
+        { "part": "England", "episode": "Interiors", "place": "elstree-studios", "scene": "Elstree — the temple and mine sets" },
+        { "part": "England", "episode": "Interiors", "place": "london", "scene": "London — pickups and interiors" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "1935 · Shanghai", "episode": "Act 1", "place": "shanghai", "scene": "Shanghai — Club Obi Wan and the escape" },
+        { "part": "1935 · India", "episode": "Act 2", "place": "delhi", "scene": "India — the starving village" },
+        { "part": "1935 · India", "episode": "Act 3", "place": "india", "label": "Pankot", "scene": "Pankot Palace — the temple below" }
+      ]
+    }
+  }
+}

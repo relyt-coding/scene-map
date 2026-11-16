@@ -68,10 +68,16 @@
     initMap();
 
     placeIndex = places.map((p) => ({ kind: "place", id: p[0], name: p[1], n: norm(p[1]), sub: placeSub(p), score: p[7] }));
-    routeIndex = routes.map((r) => ({
-      kind: "route", kindFor: r.kind || "", id: r.id, name: r.title, n: norm(r.title),
-      sub: "Guided route", score: 60,
-    }));
+    routeIndex = [];
+    for (const r of routes) {
+      const seen = new Set();
+      for (const name of [r.title].concat(r.aliases || [])) {
+        const n = norm(name);
+        if (!n || seen.has(n)) continue;
+        seen.add(n);
+        routeIndex.push({ kind: "route", kindFor: r.kind || "", id: r.id, name: r.title, n, sub: KIND_LABEL[r.kind] || "Route", score: 60 });
+      }
+    }
 
 
     $("#search").placeholder = "Loading titles" + ELLIPSIS;
@@ -290,11 +296,20 @@
       return 0;
     };
 
+    const seenRoute = new Set();
     for (const it of routeIndex) {
+      if (seenRoute.has(it.id)) continue;
       const sc = score(it);
-      if (sc && (!it.kindFor || filters.has(it.kindFor))) out.push({ it, s: sc + 150 });
+      if (sc && (!it.kindFor || filters.has(it.kindFor))) { out.push({ it, s: sc + 150 }); seenRoute.add(it.id); }
     }
+    const routeNames = new Set();
+    for (const r of routes) {
+      routeNames.add(norm(r.title));
+      for (const al of r.aliases || []) routeNames.add(norm(al));
+    }
+
     for (const it of titleIndex) {
+      if (routeNames.has(it.n)) continue;
       const s = score(it);
       if (s && filters.has(it.kindFor)) out.push({ it, s: s + (it.score || 0) });
     }
