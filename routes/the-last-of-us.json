@@ -1,0 +1,40 @@
+{
+  "id": "the-last-of-us",
+  "title": "The Last of Us",
+  "subtitle": "HBO · 2023–",
+  "curated": true,
+  "aliases": ["the last of us part ii"],
+  "note": "Two tracks. Filmed mostly in Alberta, Canada; the story crosses the United States. Scene labels and the story order are ours, not from the dataset.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/The_Last_of_Us_(TV_series)"
+  ],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Season 1 · 2023", "episode": "Ep. 1–2", "place": "calgary", "scene": "Calgary stands in for Austin and the Boston quarantine zone" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 2", "place": "fort-macleod", "scene": "Fort Macleod's main street becomes the Boston QZ" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 2", "place": "high-river", "scene": "High River plays the small-town Midwest" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 1", "place": "heritage-park-historical-village", "scene": "Period streets for the 2003 prologue" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 2", "place": "okotoks", "scene": "Okotoks' storefronts dressed as Boston" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 4–5", "place": "olds", "scene": "Prairie roads between the settlements" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 6", "place": "canmore", "scene": "The mountains around Jackson" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 6", "place": "waterton-lakes-national-park", "scene": "Wilderness beyond the settlements" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 7", "place": "edmonton", "scene": "Interiors and the university labs" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 4–5", "place": "kansas-city", "scene": "Kansas City, played by Kansas City itself" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "Season 1 · 2023", "episode": "Ep. 1", "place": "austin", "scene": "Austin, Texas, 2003 — the night everything ends" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 2–3", "place": "boston", "scene": "Boston, 2023 — the quarantine zone" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 3", "place": "lincoln", "scene": "Lincoln, Massachusetts — Bill and Frank's town" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 4–5", "place": "kansas-city", "scene": "Kansas City, Missouri — Henry and Sam" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 6", "place": "jackson-q871285", "scene": "Jackson, Wyoming — Tommy's settlement" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 7", "place": "boulder", "scene": "Boulder, Colorado — the university" },
+        { "part": "Season 1 · 2023", "episode": "Ep. 9", "place": "salt-lake-city", "scene": "Salt Lake City, Utah — the hospital" }
+      ]
+    }
+  }
+}

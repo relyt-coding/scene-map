@@ -530,34 +530,47 @@
 
   function routeForTitle(t) {
     const n = norm(t[1]);
-    return routes.find((r) => norm(r.title) === n || (r.aliases || []).some((a) => norm(a) === n));
+    return routes.find((r) => (!r.kind || r.kind === t[2]) && (norm(r.title) === n || (r.aliases || []).some((a) => norm(a) === n)));
   }
 
-  function computeSteps(route, mode) {
-    if (mode === "scene") return route.stops.map((s, i) => ({ part: s.part, episode: s.episode, parts: [s], scene: s.scene, idx: i }));
+  function computeSteps(stops, mode) {
+    if (mode === "scene") return stops.map((s, i) => ({ part: s.part, episode: s.episode, parts: [s], scene: s.scene, idx: i }));
     const steps = [];
     let cur = null;
-    route.stops.forEach((s, i) => {
+    stops.forEach((s, i) => {
       if (cur && cur.part === s.part && cur.episode === s.episode) cur.parts.push(s);
       else { cur = { part: s.part, episode: s.episode, parts: [s], scene: s.scene, idx: i }; steps.push(cur); }
     });
     return steps;
   }
 
-  function openRoute(rid, mode) {
+  function defaultTrack(route) {
+    return route.tracks.story ? "story" : Object.keys(route.tracks)[0];
+  }
+
+  function currentStops() {
+    return routeState.route.tracks[routeState.track].stops;
+  }
+
+  function writeRouteHash() {
+    history.replaceState(null, "", `#r=${routeState.route.id}&t=${routeState.track}&s=${routeState.step + 1}&m=${routeState.mode}`);
+  }
+
+  function openRoute(rid, mode, track) {
     const route = routes.find((r) => r.id === rid);
     if (!route) return;
     current = { type: "route", id: rid };
-    routeState = { route, mode: mode === "episode" ? "episode" : "scene", step: 0 };
-    routeState.steps = computeSteps(route, routeState.mode);
+    const tr = track && route.tracks[track] ? track : defaultTrack(route);
+    routeState = { route, track: tr, mode: mode === "episode" ? "episode" : "scene", step: 0 };
+    routeState.steps = computeSteps(currentStops(), routeState.mode);
     openPanel();
-    history.replaceState(null, "", `#r=${encodeURIComponent(rid)}&s=1&m=${routeState.mode}`);
-    mapFillRoute(route);
+    writeRouteHash();
+    mapFillRoute();
     renderRoute();
   }
 
-  function mapFillRoute(route) {
-    const pts = route.stops;
+  function mapFillRoute() {
+    const pts = currentStops();
     const b = new maplibregl.LngLatBounds();
     pts.forEach((s) => b.extend([s.lng, s.lat]));
     setBaseVisible(false);
@@ -579,7 +592,7 @@
     preload(i + 1); preload(i - 1);
     const p = routeState.steps[i].parts[0];
     map.flyTo({ center: [p.lng, p.lat], zoom: Math.max(map.getZoom(), 6), duration: 800, offset: [-panelW() / 2, 0] });
-    history.replaceState(null, "", `#r=${routeState.route.id}&s=${i + 1}&m=${routeState.mode}`);
+    writeRouteHash();
     renderRoute();
   }
 
@@ -599,7 +612,7 @@
 
     const also = s.parts.length > 1 ? s.parts.slice(1).map((x) => x.name) : [];
     const pad = (n) => String(n).padStart(2, "0");
-    const localFile = (privateManifest[route.id] || {})[String((s.idx || 0) + 1)];
+    const localFile = (privateManifest[route.id] || {})[routeState.track + ":" + String((s.idx || 0) + 1)];
     const heroSrc = localFile ? "data/" + localFile : p.image;
     const credit = localFile
       ? "Your own copy"
@@ -612,9 +625,14 @@
       <h1 style="font-size:20px">${esc(route.title)}</h1>
       ${route.subtitle ? `<div class="meta" style="font-size:12.5px">${esc(route.subtitle)}</div>` : ""}
 
-      <div class="seg">
-        <button data-mode="scene" class="${mode === "scene" ? "on" : ""}">Scene</button>
-        <button data-mode="episode" class="${mode === "episode" ? "on" : ""}">Episode</button>
+      <div class="segs">
+        ${Object.keys(route.tracks).length > 1
+          ? `<div class="seg">${Object.keys(route.tracks).map((k) => `<button data-track="${k}" class="${routeState.track === k ? "on" : ""}">${esc(route.tracks[k].label)}</button>`).join("")}</div>`
+          : ""}
+        <div class="seg">
+          <button data-mode="scene" class="${mode === "scene" ? "on" : ""}">Scene</button>
+          <button data-mode="episode" class="${mode === "episode" ? "on" : ""}">Episode</button>
+        </div>
       </div>
 
       <div class="counter">${pad(step + 1)} / ${pad(steps.length)}</div>
@@ -625,8 +643,8 @@
       <div class="stop-place">
         ${localFile && p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy" title="${esc(p.photoName || "")}">` : ""}
         <div>
-          <div class="nm">${esc(p.name)}</div>
-          <div class="ct">${esc(p.country || "")}${also.length ? " " + MIDDOT + " also " + esc(also.join(", ")) : ""}</div>
+          <div class="nm">${esc(p.label || p.name)}</div>
+          <div class="ct">${p.label ? "Pinned at " + esc(p.name) : esc(p.country || "")}${also.length ? " " + MIDDOT + " also " + esc(also.join(", ")) : ""}</div>
           ${localFile && p.photoName ? `<div class="ct" style="font-size:10px;opacity:.75">Real place: ${esc(p.photoName)}${p.photoLicence ? " " + MIDDOT + " " + esc(p.photoLicence) : ""}</div>` : ""}
         </div>
       </div>
@@ -653,8 +671,18 @@
 
   /* ---------------- panel events ---------------- */
   body.addEventListener("click", (e) => {
-    const t = e.target.closest("[data-title],[data-name],[data-place],[data-route],[data-step],[data-mode]");
+    const t = e.target.closest("[data-title],[data-name],[data-place],[data-route],[data-step],[data-mode],[data-track]");
     if (!t) return;
+    if (t.dataset.track) {
+      if (!routeState) return;
+      routeState.track = t.dataset.track;
+      routeState.steps = computeSteps(currentStops(), routeState.mode);
+      routeState.step = 0;
+      mapFillRoute();
+      writeRouteHash();
+      renderRoute();
+      return;
+    }
     if (t.dataset.name) {
       inputEl.value = t.dataset.name;
       runSearch(t.dataset.name);
@@ -689,7 +717,7 @@
     else if (q.get("r")) {
       const route = routes.find((r) => r.id === q.get("r"));
       if (!route) return;
-      openRoute(route.id, q.get("m") === "episode" ? "episode" : "scene");
+      openRoute(route.id, q.get("m") === "episode" ? "episode" : "scene", q.get("t") || undefined);
       const s = parseInt(q.get("s") || "1", 10);
       if (s > 1) goStep(s - 1);
     }

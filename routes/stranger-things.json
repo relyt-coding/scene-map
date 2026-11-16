@@ -1,0 +1,36 @@
+{
+  "id": "stranger-things",
+  "title": "Stranger Things",
+  "subtitle": "Netflix · 2016–",
+  "curated": true,
+  "note": "Filmed in Georgia, with season 4 adding New Mexico and Lithuania. The story track pins the fictional towns to the nearest real place: Hawkins to Indiana, Lenora Hills to California.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Stranger_Things"
+  ],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Seasons 1–3 · 1983–85", "episode": "Ep. 1–8", "place": "atlanta", "scene": "Atlanta — the studio base for the whole series" },
+        { "part": "Seasons 1–3 · 1983–85", "episode": "Ep. 1–8", "place": "jackson", "scene": "Jackson, Georgia — downtown Hawkins" },
+        { "part": "Seasons 1–3 · 1983–85", "episode": "Ep. 1–8", "place": "conyers", "scene": "Conyers — Hawkins High and the lab" },
+        { "part": "Seasons 1–3 · 1983–85", "episode": "Ep. 1–8", "place": "fayetteville", "scene": "Fayetteville — the woods and the quarry" },
+        { "part": "Seasons 2–3 · 1984–85", "episode": "Ep. 9–34", "place": "rome-q6580", "scene": "Rome, Georgia — small-town streets" },
+        { "part": "Season 4 · 1986", "episode": "Ep. 35–43", "place": "albuquerque", "scene": "Albuquerque — the California desert run" },
+        { "part": "Season 4 · 1986", "episode": "Ep. 35–43", "place": "albuquerque-studios", "scene": "Studio stages for the Upside Down" },
+        { "part": "Season 4 · 1986", "episode": "Ep. 35–43", "place": "vilnius", "scene": "Vilnius — the Soviet Union" },
+        { "part": "Season 4 · 1986", "episode": "Ep. 35–43", "place": "lukiskes-prison", "scene": "Lukiškės Prison — Kamchatka" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "Seasons 1–4 · 1983–86", "episode": "Ep. 1–43", "place": "south-bend", "label": "Hawkins, Indiana", "scene": "A small Indiana town, and the lab beneath it" },
+        { "part": "Season 4 · 1986", "episode": "Ep. 35–43", "place": "sacramento", "label": "Lenora Hills, California", "scene": "The Byers' new home in the California hills" },
+        { "part": "Season 4 · 1986", "episode": "Ep. 35–43", "place": "salt-lake-city", "scene": "Salt Lake City — Suzie's house" },
+        { "part": "Season 4 · 1986", "episode": "Ep. 35–43", "place": "las-vegas", "label": "Nevada desert", "scene": "The desert run, and the pizza van" },
+        { "part": "Season 4 · 1986", "episode": "Ep. 35–43", "place": "vladivostok", "label": "Kamchatka, Russia", "scene": "Hopper's prison camp in the Russian Far East" }
+      ]
+    }
+  }
+}

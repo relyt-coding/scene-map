@@ -1,0 +1,39 @@
+{
+  "id": "outlander",
+  "title": "Outlander",
+  "subtitle": "Starz · 2014–",
+  "kind": "tv",
+  "curated": true,
+  "note": "Filmed in Scotland, with Prague standing in for Paris and South Africa for the Americas. The story track follows Claire from Inverness to North Carolina.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Outlander_(TV_series)"
+  ],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Season 1 · 1743", "episode": "Ep. 1–8", "place": "culross", "scene": "Culross — 18th-century Inverness" },
+        { "part": "Season 1 · 1743", "episode": "Ep. 1–8", "place": "doune-castle", "scene": "Doune Castle — Castle Leoch" },
+        { "part": "Season 1 · 1743", "episode": "Ep. 8–16", "place": "blackness-castle", "scene": "Blackness Castle — Fort William" },
+        { "part": "Season 1 · 1743", "episode": "Ep. 8–16", "place": "stirling", "scene": "Stirling — the road north" },
+        { "part": "Seasons 1–3", "episode": "Ep. 1–40", "place": "glasgow", "scene": "Glasgow — city streets and interiors" },
+        { "part": "Season 2 · 1968", "episode": "Ep. 17–29", "place": "cumbernauld", "scene": "Cumbernauld — wartime and 1960s Britain" },
+        { "part": "Seasons 4–7", "episode": "Ep. 41+", "place": "east-linton", "scene": "East Linton — the village at Fraser's Ridge" },
+        { "part": "Season 1 · 1743", "episode": "Ep. 8–16", "place": "bamburgh-castle", "scene": "Bamburgh — the English castles" },
+        { "part": "Season 2 · 1744", "episode": "Ep. 17–29", "place": "prague", "scene": "Prague — standing in for Paris" },
+        { "part": "Seasons 3–6", "episode": "Ep. 30+", "place": "cape-town", "scene": "Cape Town — standing in for the Americas" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "1945", "episode": "Ep. 1", "place": "edinburgh", "label": "Inverness, Scotland", "scene": "Inverness, 1945 — the stones at Craigh na Dun" },
+        { "part": "1743", "episode": "Ep. 1–16", "place": "stirling", "label": "The Highlands", "scene": "The Highlands, 1743 — Castle Leoch and the rising" },
+        { "part": "1744", "episode": "Ep. 17–29", "place": "paris", "scene": "Paris, 1744 — the Jacobite court" },
+        { "part": "1760s", "episode": "Ep. 30–40", "place": "kingston", "scene": "Jamaica, 1760s — the Caribbean crossing" },
+        { "part": "1760s", "episode": "Ep. 41+", "place": "north-carolina", "label": "North Carolina", "scene": "North Carolina, 1760s — Fraser's Ridge" },
+        { "part": "1968", "episode": "Ep. 17–29", "place": "glasgow", "label": "Scotland, 1968", "scene": "Claire's own century, and the road back" }
+      ]
+    }
+  }
+}

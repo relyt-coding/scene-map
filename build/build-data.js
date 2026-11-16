@@ -209,50 +209,64 @@ console.log(JSON.stringify(meta, null, 1));
 // ---- validate any curated routes ----
 const routesDir = path.join(__dirname, "..", "routes");
 const allRoutes = [];
+
+function resolveStops(file, stops) {
+  const missing = (stops || []).filter((x) => !places.has(x.place)).map((x) => x.place);
+  const missingPhotos = (stops || []).filter((x) => x.photo && !places.has(x.photo)).map((x) => x.photo);
+  if (missing.length) console.log("ROUTE " + file + ": MISSING PLACE " + missing.join(", "));
+  if (missingPhotos.length) console.log("ROUTE " + file + ": MISSING PHOTO " + missingPhotos.join(", "));
+  return (stops || [])
+    .filter((x) => places.has(x.place))
+    .map((x) => {
+      const pc = places.get(x.place);
+      const ph = places.get(x.photo) || pc;
+      return {
+        part: x.part,
+        episode: x.episode,
+        scene: x.scene,
+        place: x.place,
+        label: x.label || "",
+        name: pc.name,
+        country: pc.country,
+        lat: +pc.lat.toFixed(4),
+        lng: +pc.lng.toFixed(4),
+        image: (ph.image || "").replace("width=500", "width=1200"),
+        photoPlace: ph.slug,
+        photoName: ph.name,
+        photoBy: ph.imageBy || "",
+        photoLicence: ph.imageLicence || "",
+        photoLicenceUrl: ph.imageLicenceUrl || "",
+      };
+    });
+}
+
 if (fs.existsSync(routesDir)) {
   for (const f of fs.readdirSync(routesDir).filter((x) => x.endsWith(".json"))) {
     const route = JSON.parse(fs.readFileSync(path.join(routesDir, f), "utf8"));
-    const missing = route.stops.filter((s) => !places.has(s.place)).map((s) => s.place);
-    if (missing.length) console.log(`ROUTE ${f}: MISSING ${missing.join(", ")}`);
-    else console.log(`ROUTE ${f}: ok (${route.stops.length} stops)`);
+    const tracks = {};
 
-    const missingPhotos = route.stops
-      .filter((s) => s.photo && !places.has(s.photo))
-      .map((s) => s.photo);
-    if (missingPhotos.length) console.log(`ROUTE ${f}: MISSING PHOTO ${missingPhotos.join(", ")}`);
+    if (route.tracks) {
+      for (const key of Object.keys(route.tracks)) {
+        const t = route.tracks[key];
+        tracks[key] = { label: t.label || key, stops: resolveStops(f + " [" + key + "]", t.stops) };
+      }
+    } else {
+      tracks.filmed = { label: "Where it was filmed", stops: resolveStops(f, route.stops) };
+    }
 
-    const resolved = route.stops
-      .filter((s) => places.has(s.place))
-      .map((s) => {
-        const p = places.get(s.place);
-        const ph = places.get(s.photo) || p;
-        const big = (ph.image || "").replace("width=500", "width=1200");
-        return {
-          part: s.part,
-          episode: s.episode,
-          scene: s.scene,
-          place: s.place,
-          name: p.name,
-          country: p.country,
-          lat: +p.lat.toFixed(4),
-          lng: +p.lng.toFixed(4),
-          image: big,
-          photoPlace: ph.slug,
-          photoName: ph.name,
-          photoBy: ph.imageBy || "",
-          photoLicence: ph.imageLicence || "",
-          photoLicenceUrl: ph.imageLicenceUrl || "",
-        };
-      });
+    const counts = Object.keys(tracks).map((k) => k + ":" + tracks[k].stops.length).join(" ");
+    console.log("ROUTE " + f + ": ok (" + counts + ")");
+
     allRoutes.push({
       id: route.id,
       title: route.title,
       subtitle: route.subtitle || "",
       curated: !!route.curated,
+      kind: route.kind || "",
       aliases: route.aliases || [],
       note: route.note || "",
       sources: route.sources || [],
-      stops: resolved,
+      tracks,
     });
   }
 }
@@ -265,7 +279,6 @@ const PRIVATE_OUT = path.join(OUT, "private");
 const manifest = {};
 
 if (LOCAL && fs.existsSync(PRIVATE_SRC)) {
-  fs.mkdirSync(PRIVATE_OUT, { recursive: true });
   for (const dir of fs.readdirSync(PRIVATE_SRC, { withFileTypes: true })) {
     if (!dir.isDirectory()) continue;
     const routeId = dir.name;
@@ -274,22 +287,45 @@ if (LOCAL && fs.existsSync(PRIVATE_SRC)) {
       console.log("PRIVATE " + routeId + ": no such route");
       continue;
     }
-    const files = fs.readdirSync(path.join(PRIVATE_SRC, routeId));
+
     const map = {};
-    fs.mkdirSync(path.join(PRIVATE_OUT, routeId), { recursive: true });
-    for (const f of files) {
-      const m = /^(\d{1,2})\.(jpg|jpeg|png|webp|avif)$/i.exec(f);
-      if (!m) continue;
-      const n = parseInt(m[1], 10);
-      if (n < 1 || n > route.stops.length) {
-        console.log("PRIVATE " + routeId + "/" + f + ": stop out of range");
-        continue;
+    const copy = (srcPath, relPath, track, n) => {
+      const trackDef = route.tracks[track];
+      if (!trackDef) { console.log("PRIVATE " + routeId + ": no track " + track); return; }
+      if (n < 1 || n > trackDef.stops.length) {
+        console.log("PRIVATE " + routeId + "/" + relPath + ": stop out of range");
+        return;
       }
-      fs.copyFileSync(path.join(PRIVATE_SRC, routeId, f), path.join(PRIVATE_OUT, routeId, f));
-      map[String(n)] = "private/" + routeId + "/" + f;
+      fs.mkdirSync(path.dirname(path.join(PRIVATE_OUT, relPath)), { recursive: true });
+      fs.copyFileSync(srcPath, path.join(PRIVATE_OUT, relPath));
+      map[track + ":" + n] = "private/" + relPath;
+    };
+
+    for (const entry of fs.readdirSync(path.join(PRIVATE_SRC, routeId), { withFileTypes: true })) {
+      const firstTrack = Object.keys(route.tracks)[0];
+      if (entry.isDirectory()) continue;
+      const m = /^(\d{1,2})\.(jpg|jpeg|png|webp|avif)$/i.exec(entry.name);
+      if (!m) continue;
+      copy(
+        path.join(PRIVATE_SRC, routeId, entry.name),
+        routeId + "/" + entry.name,
+        firstTrack,
+        parseInt(m[1], 10)
+      );
     }
+
+    for (const track of Object.keys(route.tracks)) {
+      const td = path.join(PRIVATE_SRC, routeId, track);
+      if (!fs.existsSync(td)) continue;
+      for (const file of fs.readdirSync(td)) {
+        const m = /^(\d{1,2})\.(jpg|jpeg|png|webp|avif)$/i.exec(file);
+        if (!m) continue;
+        copy(path.join(td, file), routeId + "/" + track + "/" + file, track, parseInt(m[1], 10));
+      }
+    }
+
     manifest[routeId] = map;
-    console.log("PRIVATE " + routeId + ": " + Object.keys(map).length + "/" + route.stops.length + " photos");
+    console.log("PRIVATE " + routeId + ": " + Object.keys(map).length + " photos");
   }
 }
 writeJson(path.join(OUT, "private", "manifest.json"), manifest);

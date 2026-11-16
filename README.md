@@ -39,6 +39,30 @@ title whose name matches `title` or an alias.
 
 `place` must be a slug from the dataset — the build prints any that don't exist.
 
+## Filmed vs story tracks
+
+A route can carry two tracks: `filmed` (where it was shot) and `story` (where it
+takes place). A stop's `label` renames it on the card, which is how a fictional
+town gets pinned to a real one:
+
+```json
+{
+  "tracks": {
+    "filmed": { "label": "Filmed", "stops": [] },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "Seasons 1-4", "episode": "Ep. 1-43", "place": "south-bend",
+          "label": "Hawkins, Indiana", "scene": "A small Indiana town" }
+      ]
+    }
+  }
+}
+```
+
+The card shows "Hawkins, Indiana" and "Pinned at South Bend". Routes with both
+tracks open on `story` and get a Filmed / Takes place switch.
+
 ## Private screenshots (local only)
 
 Anime and game frames are copyrighted, so they are not on the public site. For your

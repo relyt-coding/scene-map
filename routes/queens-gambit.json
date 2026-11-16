@@ -1,0 +1,32 @@
+{
+  "id": "queens-gambit",
+  "title": "The Queen's Gambit",
+  "subtitle": "Netflix · 2020",
+  "curated": true,
+  "note": "Filmed in Canada, with Berlin supplying Moscow and Paris. The story track runs from Kentucky to the Moscow final.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/The_Queen%27s_Gambit_(miniseries)"
+  ],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Miniseries · 2020", "episode": "Ep. 1–7", "place": "toronto", "scene": "Toronto — New York and the American cities" },
+        { "part": "Miniseries · 2020", "episode": "Ep. 1–7", "place": "hamilton", "scene": "Hamilton, Ontario — Kentucky streets" },
+        { "part": "Miniseries · 2020", "episode": "Ep. 1", "place": "cambridge-q1028279", "scene": "Cambridge, Ontario — the orphanage" },
+        { "part": "Miniseries · 2020", "episode": "Ep. 4–7", "place": "berlin", "scene": "Berlin — Moscow and Paris interiors" },
+        { "part": "Miniseries · 2020", "episode": "Ep. 4–7", "place": "spandau", "scene": "Spandau — the tournament halls" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "1950s", "episode": "Ep. 1–2", "place": "louisville", "label": "Lexington, Kentucky", "scene": "Lexington, Kentucky — Beth's home and the orphanage" },
+        { "part": "1960s", "episode": "Ep. 2–3", "place": "cincinnati", "scene": "Cincinnati — the first tournaments" },
+        { "part": "1966", "episode": "Ep. 4", "place": "mexico-city", "scene": "Mexico City, 1966 — the international" },
+        { "part": "1967", "episode": "Ep. 5–6", "place": "paris", "scene": "Paris, 1967 — the rematch" },
+        { "part": "1968", "episode": "Ep. 6–7", "place": "moscow", "scene": "Moscow, 1968 — the final" }
+      ]
+    }
+  }
+}

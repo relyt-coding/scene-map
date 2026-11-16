@@ -1,0 +1,38 @@
+{
+  "id": "homeland",
+  "title": "Homeland",
+  "subtitle": "Showtime · 2011–2020",
+  "curated": true,
+  "note": "Charlotte stood in for Washington, Cape Town for the Middle East, and Berlin played itself. The story track follows the CIA across the map.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Homeland_(TV_series)"
+  ],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Seasons 1–3", "episode": "Ep. 1–36", "place": "charlotte", "scene": "Charlotte — standing in for Washington" },
+        { "part": "Seasons 1–3", "episode": "Ep. 1–36", "place": "richmond-q43421", "scene": "Richmond, Virginia — more of the capital" },
+        { "part": "Seasons 1–3", "episode": "Ep. 1–36", "place": "washington-d-c", "scene": "Washington, D.C. — exteriors" },
+        { "part": "Seasons 1–3", "episode": "Ep. 1–36", "place": "new-york-city", "scene": "New York — the CIA and the city" },
+        { "part": "Season 5 · 2015", "episode": "Ep. 49–60", "place": "potsdam", "scene": "Potsdam — Berlin's streets" },
+        { "part": "Season 5 · 2015", "episode": "Ep. 49–60", "place": "berlin", "scene": "Berlin — the station at the centre of the season" },
+        { "part": "Seasons 4–8", "episode": "Ep. 37+", "place": "cape-town", "scene": "Cape Town — standing in for the Middle East" },
+        { "part": "Seasons 1–8", "episode": "Ep. 1–96", "place": "tel-aviv", "scene": "Tel Aviv — the Israeli service" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "Seasons 1–3", "episode": "Ep. 1–36", "place": "washington-d-c", "scene": "Washington, D.C. — Langley and the CIA" },
+        { "part": "Season 1–4", "episode": "Ep. 1–48", "place": "kabul", "scene": "Kabul, Afghanistan" },
+        { "part": "Season 1–4", "episode": "Ep. 1–48", "place": "beirut", "scene": "Beirut, Lebanon" },
+        { "part": "Season 4 · 2014", "episode": "Ep. 37–48", "place": "islamabad", "scene": "Islamabad, Pakistan" },
+        { "part": "Season 5 · 2015", "episode": "Ep. 49–60", "place": "berlin", "scene": "Berlin, Germany" },
+        { "part": "Season 8 · 2020", "episode": "Ep. 85–96", "place": "damascus", "scene": "Damascus, Syria" },
+        { "part": "Seasons 1–8", "episode": "Ep. 1–96", "place": "tel-aviv", "scene": "Tel Aviv, Israel" },
+        { "part": "Season 8 · 2020", "episode": "Ep. 85–96", "place": "moscow", "scene": "Moscow, Russia" }
+      ]
+    }
+  }
+}
