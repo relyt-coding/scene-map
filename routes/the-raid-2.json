@@ -1,0 +1,32 @@
+{
+  "id": "the-raid-2",
+  "title": "The Raid 2",
+  "subtitle": "Gareth Evans · 2014",
+  "kind": "film",
+  "curated": true,
+  "aliases": ["the raid 2: berandal", "berandal"],
+  "note": "Set in Jakarta, but shot across Java: prison sets in Kota Tua, the courtyard at Benteng Van der Wijck, and a nightclub in Bandung.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/The_Raid_2:_Berandal",
+    "https://www.futurefilm.fi/downloadpress.php?file_name=%2Fpresskits%2FThe+Raid+2+International+Press+Kit+1%282%29.pdf"
+  ],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Jakarta", "episode": "The prison", "place": "kota-tua-jakarta", "scene": "Kota Tua — the prison and brothel sets inside Gedung Kerta Niaga" },
+        { "part": "Central Java", "episode": "The prison", "place": "yogyakarta", "label": "Gombong, Central Java", "scene": "Benteng Van der Wijck — the prison courtyard riot" },
+        { "part": "Jakarta", "episode": "Undercover", "place": "central-jakarta", "scene": "Central Jakarta — the malls, the restaurant and the car chases" },
+        { "part": "Jakarta", "episode": "Undercover", "place": "south-jakarta", "scene": "South Jakarta — more of the road chases" },
+        { "part": "Bandung", "episode": "Undercover", "place": "bandung", "scene": "Bandung — the nightclub and the snow alley" },
+        { "part": "Bekasi", "episode": "The finale", "place": "bekasi", "scene": "Tambun, near Bekasi — the warehouse finale" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "Jakarta", "episode": "The whole film", "place": "jakarta", "scene": "Jakarta — the prison, the gangs and the final warehouse all sit in the city" }
+      ]
+    }
+  }
+}

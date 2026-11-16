@@ -39,6 +39,9 @@ title whose name matches `title` or an alias.
 
 `place` must be a slug from the dataset — the build prints any that don't exist.
 
+Routes also appear in search results as **Guided routes**, so a film that isn't in
+the dataset yet (The Raid) can still have a route.
+
 ## Filmed vs story tracks
 
 A route can carry two tracks: `filmed` (where it was shot) and `story` (where it

@@ -17,6 +17,7 @@
   let titleByQid = new Map();
   let titleIndex = [];
   let placeIndex = [];
+  let routeIndex = [];
   let routes = [];
   let filters = new Set(["film", "tv", "anime", "manga", "game"]);
   let current = null;
@@ -67,6 +68,10 @@
     initMap();
 
     placeIndex = places.map((p) => ({ kind: "place", id: p[0], name: p[1], n: norm(p[1]), sub: placeSub(p), score: p[7] }));
+    routeIndex = routes.map((r) => ({
+      kind: "route", kindFor: r.kind || "", id: r.id, name: r.title, n: norm(r.title),
+      sub: "Guided route", score: 60,
+    }));
 
 
     $("#search").placeholder = "Loading titles" + ELLIPSIS;
@@ -285,6 +290,10 @@
       return 0;
     };
 
+    for (const it of routeIndex) {
+      const sc = score(it);
+      if (sc && (!it.kindFor || filters.has(it.kindFor))) out.push({ it, s: sc + 150 });
+    }
     for (const it of titleIndex) {
       const s = score(it);
       if (s && filters.has(it.kindFor)) out.push({ it, s: s + (it.score || 0) });
@@ -306,11 +315,12 @@
       resultsEl.hidden = false;
       return;
     }
-    const groups = { title: [], place: [] };
+    const groups = { route: [], title: [], place: [] };
     for (const it of items) (groups[it.kind] || groups.place).push(it);
 
-    const order = items[0] && items[0].kind === "place" ? ["place", "title"] : ["title", "place"];
-    const heads = { title: "Films, shows, anime, games", place: "Places" };
+    const first = items[0] ? items[0].kind : "title";
+    const order = first === "route" ? ["route", "title", "place"] : first === "place" ? ["place", "title", "route"] : ["title", "route", "place"];
+    const heads = { route: "Guided routes", title: "Films, shows, anime, games", place: "Places" };
 
     let html = "";
     for (const k of order) {
@@ -324,7 +334,7 @@
 
   function rowHtml(it) {
     const t = it.kind === "title" ? titleByQid.get(it.id) : null;
-    const pill = t ? `<span class="pill">${esc(KIND_LABEL[t[2]] || t[2])}</span>` : "";
+    const pill = it.kind === "route" ? `<span class="pill set">Route</span>` : t ? `<span class="pill">${esc(KIND_LABEL[t[2]] || t[2])}</span>` : "";
     const idx = searchResults.indexOf(it);
     return `<button class="r" data-i="${idx}" role="option">
       <span class="txt"><span class="nm">${esc(it.name)}</span><span class="sub">${esc(it.sub)}</span></span>
@@ -356,7 +366,8 @@
     const it = searchResults[+row.dataset.i];
     hideResults();
     inputEl.blur();
-    if (it.kind === "title") openTitle(it.id);
+    if (it.kind === "route") openRoute(it.id);
+    else if (it.kind === "title") openTitle(it.id);
     else openPlace(it.id);
   });
 
@@ -545,7 +556,8 @@
   }
 
   function defaultTrack(route) {
-    return route.tracks.story ? "story" : Object.keys(route.tracks)[0];
+    if (route.tracks.story && route.tracks.story.stops.length >= 2) return "story";
+    return Object.keys(route.tracks)[0];
   }
 
   function currentStops() {
@@ -629,10 +641,10 @@
         ${Object.keys(route.tracks).length > 1
           ? `<div class="seg">${Object.keys(route.tracks).map((k) => `<button data-track="${k}" class="${routeState.track === k ? "on" : ""}">${esc(route.tracks[k].label)}</button>`).join("")}</div>`
           : ""}
-        <div class="seg">
+        ${steps.length > 1 ? `<div class="seg">
           <button data-mode="scene" class="${mode === "scene" ? "on" : ""}">Scene</button>
           <button data-mode="episode" class="${mode === "episode" ? "on" : ""}">Episode</button>
-        </div>
+        </div>` : ""}
       </div>
 
       <div class="counter">${pad(step + 1)} / ${pad(steps.length)}</div>

@@ -1,0 +1,20 @@
+{
+  "id": "the-raid",
+  "title": "The Raid",
+  "subtitle": "Gareth Evans · 2011",
+  "kind": "film",
+  "curated": true,
+  "aliases": ["the raid: redemption", "serbuan maut"],
+  "note": "One city, one building. The Raid is set and shot entirely in Jakarta, so there is a single stop: the whole film happens here.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/The_Raid_(2011_film)"
+  ],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Jakarta", "episode": "The apartment block", "place": "jakarta", "scene": "Jakarta — the apartment block, the police assault, and the way out" }
+      ]
+    }
+  }
+}

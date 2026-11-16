@@ -1,0 +1,32 @@
+{
+  "id": "apocalypto",
+  "title": "Apocalypto",
+  "subtitle": "Mel Gibson · 2006",
+  "kind": "film",
+  "curated": true,
+  "note": "Set in the Maya world of the Yucatán, shot in the jungle of Veracruz. The story track is the best-match pin for each beat, not a filming claim.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Apocalypto"
+  ],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Veracruz, Mexico", "episode": "Production", "place": "veracruz", "scene": "Veracruz — the production base" },
+        { "part": "Veracruz, Mexico", "episode": "Production", "place": "catemaco", "scene": "Catemaco — the jungle around the village" },
+        { "part": "Veracruz, Mexico", "episode": "Production", "place": "eyipantla-falls", "scene": "Eyipantla Falls — the waterfall" },
+        { "part": "Veracruz, Mexico", "episode": "Production", "place": "san-andres-tuxtla", "scene": "San Andrés Tuxtla — the surrounding country" },
+        { "part": "Veracruz, Mexico", "episode": "Production", "place": "paso-de-ovejas", "scene": "Paso de Ovejas — the river and the chase" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "Maya lowlands", "episode": "Act 1", "place": "merida", "label": "Yucatán — the village", "scene": "Jaguar Paw's village in the Yucatán forest" },
+        { "part": "Maya lowlands", "episode": "Act 2", "place": "chichen-itza", "label": "A Maya city", "scene": "The raiders' city and its stepped pyramids" },
+        { "part": "Maya lowlands", "episode": "Act 2", "place": "palenque", "label": "The temple city", "scene": "The sacrifice at the temple" },
+        { "part": "Maya lowlands", "episode": "Act 3", "place": "calakmul", "label": "The jungle", "scene": "The chase home through the forest" }
+      ]
+    }
+  }
+}

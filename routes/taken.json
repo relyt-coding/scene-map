@@ -1,0 +1,34 @@
+{
+  "id": "taken",
+  "title": "Taken",
+  "subtitle": "Pierre Morel · 2008",
+  "kind": "film",
+  "curated": true,
+  "note": "Shot on location in Los Angeles and Paris, where it is set, so the two tracks describe the same cities at different detail. Scene labels are ours.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Taken_(film)"
+  ],
+  "tracks": {
+    "filmed": {
+      "label": "Filmed",
+      "stops": [
+        { "part": "Los Angeles", "episode": "Act 1", "place": "los-angeles", "scene": "Bryan's house, and the airport goodbye" },
+        { "part": "Los Angeles", "episode": "Act 1", "place": "north-hollywood", "scene": "North Hollywood — Kim's ordinary life" },
+        { "part": "Paris", "episode": "Act 2", "place": "paris", "scene": "Paris — the arrival, and the airport" },
+        { "part": "Paris", "episode": "Act 2", "place": "10-arrondissement-of-paris", "scene": "The 10th arrondissement — the apartment" },
+        { "part": "Paris", "episode": "Act 2", "place": "place-de-clichy", "scene": "Place de Clichy — the market and the chase" },
+        { "part": "Paris", "episode": "Act 3", "place": "avenue-des-champs-elysees", "scene": "The Champs-Élysées" },
+        { "part": "Paris", "episode": "Act 3", "place": "tuileries-garden", "scene": "The Tuileries and the Seine — the yacht" }
+      ]
+    },
+    "story": {
+      "label": "Takes place",
+      "stops": [
+        { "part": "Los Angeles", "episode": "Act 1", "place": "los-angeles", "scene": "Los Angeles — Kim's home" },
+        { "part": "Paris", "episode": "Act 2", "place": "10-arrondissement-of-paris", "scene": "Paris — the apartment where Kim stays" },
+        { "part": "Paris", "episode": "Act 2", "place": "place-de-clichy", "scene": "Paris — the kidnapping" },
+        { "part": "Paris", "episode": "Act 3", "place": "tuileries-garden", "scene": "The Seine — the final rescue" }
+      ]
+    }
+  }
+}
