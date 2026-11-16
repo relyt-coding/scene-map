@@ -623,9 +623,11 @@
       <span class="stop-scene">${esc(s.scene || "")}</span>
 
       <div class="stop-place">
+        ${localFile && p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy" title="${esc(p.photoName || "")}">` : ""}
         <div>
           <div class="nm">${esc(p.name)}</div>
           <div class="ct">${esc(p.country || "")}${also.length ? " " + MIDDOT + " also " + esc(also.join(", ")) : ""}</div>
+          ${localFile && p.photoName ? `<div class="ct" style="font-size:10px;opacity:.75">Real place: ${esc(p.photoName)}${p.photoLicence ? " " + MIDDOT + " " + esc(p.photoLicence) : ""}</div>` : ""}
         </div>
       </div>
 
